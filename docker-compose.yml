@@ -1,0 +1,14 @@
+version: '3.3'
+services:
+  postgresql:
+    image: postgres:alpine
+    container_name: challengefuncional_api-postgresql
+    environment:
+      - POSTGRES_DB=challenge_funcional
+      - POSTGRES_PASSWORD=development
+    ports:
+      - 5432:5432
+    volumes:
+      - challengefuncional_api_psql:/var/lib/postgresql/data
+volumes:
+    challengefuncional_api_psql:
