@@ -20,6 +20,7 @@ const updateBalance = (prisma) => async (total) => {
       balance_available: total,
     },
   });
+  return result;
 };
 
 const withdraw = (prisma) => async (account, value) => {
