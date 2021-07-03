@@ -1,30 +1,11 @@
 'use strict';
-const { buildSchema } = require('graphql');
 const findAccount = require('../controllers/findAccount');
 const updateAccount = require('../controllers/updateAccount');
-
-const schema = buildSchema(`
-type Account {
-    number: Int
-    balance_available: Int
-    msg: String
-}
-
-type Query {
-    available(account: Int!) : Account
-}
-
-type Mutation {
-    withdraw(account: Int!, value: Int!): Account
-    deposit(account: Int!, value: Int!): Account
-}`);
 
 const resolvers = {
   async available({ account }) {
     const accountfind = await findAccount(account);
-    console.log(accountfind);
 
-    //TODO - Resolve erro ao informar número da conta
     if (!accountfind) {
       return new Error(`Account not found!`);
     }
@@ -83,4 +64,4 @@ const resolvers = {
   },
 };
 
-module.exports = { schema, resolvers };
+module.exports = { accountResolvers };

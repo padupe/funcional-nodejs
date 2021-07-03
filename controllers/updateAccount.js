@@ -13,7 +13,6 @@ async function updateAccount(type, account, value, balance) {
         balance_available: total,
       },
     });
-    console.log('SAQUE:', result);
     return result;
   }
   if (type == 'deposit') {
