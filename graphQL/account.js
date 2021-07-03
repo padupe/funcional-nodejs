@@ -24,10 +24,9 @@ const resolvers = {
     const accountfind = await findAccount(account);
     console.log(accountfind);
 
-    if (accountfind == null) {
-      return {
-        msg: 'Account not Found!',
-      };
+    //TODO - Resolve erro ao informar número da conta
+    if (!accountfind) {
+      return new Error(`Você é pobre`);
     }
     return {
       number: accountfind.number,
@@ -38,25 +37,30 @@ const resolvers = {
     console.log('valor do saque:', value);
     if (value > 0) {
       let accountfind = await findAccount(account);
-
-      if (accountfind) {
-        const sold = accountfind.balance_available;
-        console.log('SALDO', sold);
-        if (value <= sold) {
-          let accountWithdraw = await updateAccount('withdraw', account, value);
-          console.log('update');
-          return {
-            number: accountWithdraw.number,
-            balance_available: accountWithdraw.balance_available,
-          };
-        } else {
-          return {
-            number: accountfind.number,
-            balance_available: accountfind.balance_available,
-            msg: 'Insufficient funds',
-          };
-        }
+      console.log('SALDO NA CONTA:', accountfind.balance_available);
+      if (!accountfind) {
+        return new Error(`Você é pobre`);
       }
+      console.log(accountfind);
+      const sold = accountfind.balance_available;
+      console.log('SALDO', sold);
+      if (value <= sold) {
+        let accountWithdraw = await updateAccount(
+          'withdraw',
+          account,
+          value,
+          accountfind.balance_available
+        );
+        console.log('update', accountWithdraw);
+        return {
+          number: accountWithdraw.number,
+          balance_available: accountWithdraw.balance_available,
+        };
+      } else {
+        return new Error(`Você é pobre de novo!`);
+      }
+    } else {
+      return new Error('O valor deve ser maior que zero!');
     }
   },
   //   Query: {

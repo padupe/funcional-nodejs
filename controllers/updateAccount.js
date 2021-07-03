@@ -1,7 +1,8 @@
 const prisma = require('../prisma/prisma');
 
-async function updateAccount(type, account, value) {
+async function updateAccount(type, account, value, balance) {
   if (type == 'withdraw') {
+    const total = balance - value;
     let result = await prisma.account.update({
       where: { number: account },
       select: {
@@ -9,7 +10,7 @@ async function updateAccount(type, account, value) {
         balance_available: true,
       },
       data: {
-        balance_available: balance_available - value,
+        balance_available: total,
       },
     });
     console.log('SAQUE:', result);
