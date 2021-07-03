@@ -17,6 +17,7 @@ async function updateAccount(type, account, value, balance) {
     return result;
   }
   if (type == 'deposit') {
+    const total = balance + value;
     let result = await prisma.account.update({
       where: { number: account },
       select: {
@@ -24,7 +25,7 @@ async function updateAccount(type, account, value, balance) {
         balance_available: true,
       },
       data: {
-        balance_available: balance_available + value,
+        balance_available: total,
       },
     });
     return result;

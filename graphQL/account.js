@@ -26,7 +26,7 @@ const resolvers = {
 
     //TODO - Resolve erro ao informar número da conta
     if (!accountfind) {
-      return new Error(`Você é pobre`);
+      return new Error(`Account not found!`);
     }
     return {
       number: accountfind.number,
@@ -34,16 +34,12 @@ const resolvers = {
     };
   },
   async withdraw({ account, value }) {
-    console.log('valor do saque:', value);
     if (value > 0) {
       let accountfind = await findAccount(account);
-      console.log('SALDO NA CONTA:', accountfind.balance_available);
       if (!accountfind) {
-        return new Error(`Você é pobre`);
+        return new Error(`Account not found!`);
       }
-      console.log(accountfind);
       const sold = accountfind.balance_available;
-      console.log('SALDO', sold);
       if (value <= sold) {
         let accountWithdraw = await updateAccount(
           'withdraw',
@@ -51,37 +47,40 @@ const resolvers = {
           value,
           accountfind.balance_available
         );
-        console.log('update', accountWithdraw);
         return {
           number: accountWithdraw.number,
           balance_available: accountWithdraw.balance_available,
+          msg: 'Successful withdrawal!',
         };
       } else {
-        return new Error(`Você é pobre de novo!`);
+        return new Error(`Insufficient funds!`);
       }
     } else {
-      return new Error('O valor deve ser maior que zero!');
+      return new Error('The value must be greater than zero!');
     }
   },
-  //   Query: {
-  //     avaiable: (_, { account }) => {
-  //       return {
-  //         number,
-  //         balance_avaiable,
-  //       };
-  //     },
-  //   },
-  //   Mutation: {
-  //     createUser: (_, { name, email, conta, saldo }) => {
-  //       return { conta: conta, saldo: saldo };
-  //     },
-  //     sacar: (_, { conta, valor }) => {
-  //       return new Error(`Você é pobre`);
-  //     },
-  //     depositar: (_, { conta, valor }) => {
-  //       return { conta: conta, saldo: valor };
-  //     },
-  //   },
+  async deposit({ account, value }) {
+    if (value > 0) {
+      let accountfind = await findAccount(account);
+      if (!accountfind) {
+        return new Error(`Account not found!`);
+      }
+      const sold = accountfind.balance_available;
+      let accountDeposit = await updateAccount(
+        'deposit',
+        account,
+        value,
+        accountfind.balance_available
+      );
+      return {
+        number: accountDeposit.number,
+        balance_available: accountDeposit.balance_available,
+        msg: 'Deposit successful!',
+      };
+    } else {
+      return new Error('The value must be greater than zero!');
+    }
+  },
 };
 
 module.exports = { schema, resolvers };
