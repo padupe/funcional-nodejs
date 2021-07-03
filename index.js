@@ -3,7 +3,7 @@ const { graphqlHTTP } = require('express-graphql');
 const app = express();
 
 //Account
-const { accountSchema } = require('./graphQL/account');
+const { accountSchema } = require('./models/account.schema');
 const { accountResolvers } = require('./resolvers/account');
 
 if (process.env.NODE_ENV !== 'test') {
@@ -14,7 +14,7 @@ if (process.env.NODE_ENV !== 'test') {
   app.use(
     '/graphql',
     graphqlHTTP({
-      schema: { ...accountSchema },
+      schema: accountSchema,
       rootValue: { ...accountResolvers },
       graphiql: true,
     })

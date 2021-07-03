@@ -16,4 +16,4 @@ type Mutation {
     deposit(account: Int!, value: Int!): Account
 }`);
 
-module.exports = accountSchema;
+module.exports = { accountSchema };

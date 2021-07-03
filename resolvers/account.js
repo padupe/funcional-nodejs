@@ -1,21 +1,24 @@
 'use strict';
 const { find, deposit, withdraw } = require('../models/account');
+const prisma = require('../prisma/prisma');
 
-const resolvers = {
+const accountResolvers = {
   async available({ account }) {
-    const accountfind = await findAccount(account);
+    const accountfind = await find(prisma)(account);
 
     if (!accountfind) {
       return new Error(`Account not found!`);
     }
     return accountfind;
   },
+
   async withdraw({ account, value }) {
+    console.log(account);
     if (value <= 0) {
       return new Error('The value must be greater than zero!');
     }
 
-    let accountfind = await find(account);
+    let accountfind = await find(prisma)(account);
     if (!accountfind) {
       return new Error(`Account not found!`);
     }
@@ -23,18 +26,20 @@ const resolvers = {
     if (value > balance) {
       return new Error(`Insufficient funds!`);
     }
-    let accountWithdraw = await withdraw(account, value);
-    return { ...accountWithdraw, msg: 'Successful withdrawal!' };
+    console.log(11111, accountfind);
+    let accountWithdraw = await withdraw(prisma)(accountfind, value);
+    return accountWithdraw;
+    //return  { ...accountWithdraw, msg: 'Successful withdrawal!' };
   },
   async deposit({ account, value }) {
     if (value > 0) {
-      let accountfind = await find(account);
+      let accountfind = await find(prisma)(account);
       if (!accountfind) {
         return new Error(`Account not found!`);
       }
       const sold = accountfind.balance_available;
-      let accountDeposit = await deposit(accountfind, value);
-      return { ...accountWithdraw, msg: 'Deposit successful!' };
+      let accountDeposit = await deposit(prisma)(accountfind, value);
+      return { ...accountDeposit, msg: 'Deposit successful!' };
     } else {
       return new Error('The value must be greater than zero!');
     }

@@ -9,9 +9,9 @@ const find = (prisma) => async (data) => {
   return result;
 };
 
-const updateBalance = (prisma) => async (total) => {
+const updateBalance = (prisma) => async (account_number, total) => {
   let result = await prisma.account.update({
-    where: { number: account },
+    where: { number: account_number },
     select: {
       number: true,
       balance_available: true,
