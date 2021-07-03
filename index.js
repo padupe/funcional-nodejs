@@ -1,10 +1,20 @@
 const express = require('express');
+const { graphqlHTTP } = require('express-graphql');
 const app = express();
 
-app.listen(5555, () => {
-    console.log('Server Started! 🚀');
-  });
+const { schema, resolvers } = require('./graphQL/account');
 
-// app.use('/', routes);
+app.listen(4444, () => {
+  console.log('Server Started! 🚀');
+});
+
+app.use(
+  '/graphql',
+  graphqlHTTP({
+    schema: schema,
+    rootValue: resolvers,
+    graphiql: true,
+  })
+);
 
 module.exports = app;

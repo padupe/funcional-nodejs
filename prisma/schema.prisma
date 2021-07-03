@@ -23,6 +23,7 @@ model User {
 
 model Account {
   id                String     @id @default(cuid())
+  number            Int        @unique
   userId            String
   balance_available Int
   createdAt         DateTime   @default(now())
