@@ -1,6 +1,5 @@
 'use strict';
-const findAccount = require('../controllers/findAccount');
-const updateAccount = require('../controllers/updateAccount');
+const { find, deposit, withdraw } = require('../models/account');
 
 const resolvers = {
   async available({ account }) {
@@ -9,55 +8,33 @@ const resolvers = {
     if (!accountfind) {
       return new Error(`Account not found!`);
     }
-    return {
-      number: accountfind.number,
-      balance_available: accountfind.balance_available,
-    };
+    return accountfind;
   },
   async withdraw({ account, value }) {
-    if (value > 0) {
-      let accountfind = await findAccount(account);
-      if (!accountfind) {
-        return new Error(`Account not found!`);
-      }
-      const sold = accountfind.balance_available;
-      if (value <= sold) {
-        let accountWithdraw = await updateAccount(
-          'withdraw',
-          account,
-          value,
-          accountfind.balance_available
-        );
-        return {
-          number: accountWithdraw.number,
-          balance_available: accountWithdraw.balance_available,
-          msg: 'Successful withdrawal!',
-        };
-      } else {
-        return new Error(`Insufficient funds!`);
-      }
-    } else {
+    if (value <= 0) {
       return new Error('The value must be greater than zero!');
     }
+
+    let accountfind = await find(account);
+    if (!accountfind) {
+      return new Error(`Account not found!`);
+    }
+    const balance = accountfind.balance_available;
+    if (value > balance) {
+      return new Error(`Insufficient funds!`);
+    }
+    let accountWithdraw = await withdraw(account, value);
+    return { ...accountWithdraw, msg: 'Successful withdrawal!' };
   },
   async deposit({ account, value }) {
     if (value > 0) {
-      let accountfind = await findAccount(account);
+      let accountfind = await find(account);
       if (!accountfind) {
         return new Error(`Account not found!`);
       }
       const sold = accountfind.balance_available;
-      let accountDeposit = await updateAccount(
-        'deposit',
-        account,
-        value,
-        accountfind.balance_available
-      );
-      return {
-        number: accountDeposit.number,
-        balance_available: accountDeposit.balance_available,
-        msg: 'Deposit successful!',
-      };
+      let accountDeposit = await deposit(accountfind, value);
+      return { ...accountWithdraw, msg: 'Deposit successful!' };
     } else {
       return new Error('The value must be greater than zero!');
     }
