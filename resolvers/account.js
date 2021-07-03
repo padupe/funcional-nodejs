@@ -26,11 +26,11 @@ const accountResolvers = {
     if (value > balance) {
       return new Error(`Insufficient funds!`);
     }
-    console.log(11111, accountfind);
     let accountWithdraw = await withdraw(prisma)(accountfind, value);
-    return accountWithdraw;
-    //return  { ...accountWithdraw, msg: 'Successful withdrawal!' };
+    // return accountWithdraw;
+    return { ...accountWithdraw, msg: 'Successful withdrawal!' };
   },
+
   async deposit({ account, value }) {
     if (value > 0) {
       let accountfind = await find(prisma)(account);
