@@ -26,7 +26,6 @@ const accountResolvers = {
       return new Error(`Saldo Insuficiente!`);
     }
     let accountWithdraw = await withdraw(prisma)(accountfind, valor);
-    // return accountWithdraw;
     return { ...accountWithdraw, msg: 'Saque realizado com sucesso!' };
   },
 

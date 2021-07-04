@@ -12,6 +12,8 @@ Para a conclusão deste desafio, as ferramentas abaixo foram aplicadas:
 - [express] - Framework
 - [prisma] - ORM responsável pela Conexão com o Banco de Dados
 - [postgresql] - Sistema gerenciador de Banco de Dados
+- [prettier] - "Formatador" de Código
+- [eslint] - "Corretor" de erros de Código/Sintaxe
 
 ## Comandos Úteis para uso da Aplicação
 
@@ -91,3 +93,5 @@ mutation {
 [graphqlhttp]: https://github.com/graphql/express-graphql
 [prisma]: https://www.prisma.io/
 [postgresql]: https://www.postgresql.org/
+[prettier]: https://prettier.io/
+[eslint]: https://eslint.org/
