@@ -36,4 +36,5 @@ module.exports = {
   withdraw,
   deposit,
   find,
+  updateBalance,
 };

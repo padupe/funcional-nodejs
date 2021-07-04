@@ -10,23 +10,23 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model User {
+model Usuario {
   id              String   @id @default(cuid())
-  username        String   @unique
-  nome_completo   String
+  usuario         String   @unique
+  nomeCompleto    String
   email           String   @unique
   telefone        String
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @default(now()) @updatedAt
+  criado          DateTime @default(now())
+  alterado        DateTime @default(now()) @updatedAt
   conta           Conta[]
 }
 
 model Conta {
   id                String     @id @default(cuid())
   numero            Int        @unique
-  userId            String
+  usuarioId         String
   saldo             Int
-  createdAt         DateTime   @default(now())
-  updatedAt         DateTime   @default(now()) @updatedAt
-  user              User       @relation(fields: [userId], references: [id])
+  criado            DateTime @default(now())
+  alterado          DateTime @default(now()) @updatedAt
+  usuario           Usuario    @relation(fields: [usuarioId], references: [id])
 }

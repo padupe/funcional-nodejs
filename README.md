@@ -30,7 +30,7 @@ Iniciar o Servidor da Aplicação
 Subir as configurações do container
 
 ```
-    $ docker-compose up
+    $ docker-compose up -d
 ```
 
 ## Prisma
@@ -55,7 +55,7 @@ Consulta de Conta e Saldo
 
 ```graphql
 query {
-  saldo(conta: 16101990) {
+  saldo(conta: 54321) {
     numero
     saldo
   }
@@ -66,7 +66,7 @@ Saque
 
 ```graphql
 mutation {
-  sacar(conta: 16101990, valor: 1) {
+  sacar(conta: 54321, valor: 140) {
     numero
     saldo
     msg
@@ -78,7 +78,7 @@ Depósito
 
 ```graphql
 mutation {
-  depositar(conta: 16101990, valor: 98) {
+  depositar(conta: 54321, valor: 200) {
     numero
     saldo
     msg
