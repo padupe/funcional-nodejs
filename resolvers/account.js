@@ -7,7 +7,7 @@ const accountResolvers = {
     const accountfind = await find(prisma)(conta);
 
     if (!accountfind) {
-      return new Error(`Account not found!`);
+      return new Error(`Conta não localizada!`);
     }
     return accountfind;
   },
