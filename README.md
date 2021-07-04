@@ -7,6 +7,8 @@ Desafio proposto no processo de contratação de Desenvolvedor Backend Jr Nodejs
 Para a conclusão deste desafio, as ferramentas abaixo foram aplicadas:
 
 - [node.js] - Eventos voltados para o Backend
+- [graphql] - Linguagem de Consulta para API
+- [graphqlHTTP] - Módulo fornece uma maneira simples de criar um servidor Express que executa uma API GraphQL
 - [express] - Framework
 - [prisma] - ORM responsável pela Conexão com o Banco de Dados
 - [postgresql] - Sistema gerenciador de Banco de Dados
@@ -40,20 +42,20 @@ Iniciar Migration
 Enviar dados de Teste
 
 ```
-    $ node prisma/seed.js
+    $ yarn seed
 ```
 
 ## GraphQL
 
 Exemplos de Query e Mutations
 
-Consulta de Conta
+Consulta de Conta e Saldo
 
 ```graphql
 query {
-  available(account: 16101990) {
-    number
-    balance_available
+  saldo(conta: 16101990) {
+    numero
+    saldo
   }
 }
 ```
@@ -62,9 +64,9 @@ Saque
 
 ```graphql
 mutation {
-  withdraw(account: 16101990, value: 1) {
-    number
-    balance_available
+  sacar(conta: 16101990, valor: 1) {
+    numero
+    saldo
     msg
   }
 }
@@ -74,9 +76,9 @@ Depósito
 
 ```graphql
 mutation {
-  deposit(account: 16101990, value: 10) {
-    number
-    balance_available
+  depositar(conta: 16101990, valor: 98) {
+    numero
+    saldo
     msg
   }
 }
@@ -84,6 +86,8 @@ mutation {
 
 [//]: #
 [node.js]: http://nodejs.org
+[graphql]: https://graphql.org/
 [express]: https://expressjs.com/
+[graphqlhttp]: https://github.com/graphql/express-graphql
 [prisma]: https://www.prisma.io/
 [postgresql]: https://www.postgresql.org/

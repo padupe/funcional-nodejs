@@ -1,19 +1,19 @@
 const { buildSchema } = require('graphql');
 
 const accountSchema = buildSchema(`
-type Account {
-    number: Int
-    balance_available: Int
+type Conta {
+    numero: Int
+    saldo: Int
     msg: String
 }
 
 type Query {
-    available(account: Int!) : Account
+    saldo(conta: Int!) : Conta
 }
 
 type Mutation {
-    withdraw(account: Int!, value: Int!): Account
-    deposit(account: Int!, value: Int!): Account
+    sacar(conta: Int!, valor: Int!): Conta
+    depositar(conta: Int!, valor: Int!): Conta
 }`);
 
 module.exports = { accountSchema };

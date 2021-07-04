@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon",
     "migrate": "npx prisma migrate dev --name init",
-    "seed": "npx prisma db seed --preview-feature",
+    "seed": "node prisma/seed.js",
     "test": "cross-env NODE_ENV=test jest --testTimeout=15000"
   },
   "author": "Paulo",

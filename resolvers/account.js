@@ -3,8 +3,8 @@ const { find, deposit, withdraw } = require('../models/account');
 const prisma = require('../prisma/prisma');
 
 const accountResolvers = {
-  async available({ account }) {
-    const accountfind = await find(prisma)(account);
+  async saldo({ conta }) {
+    const accountfind = await find(prisma)(conta);
 
     if (!accountfind) {
       return new Error(`Account not found!`);
@@ -12,36 +12,35 @@ const accountResolvers = {
     return accountfind;
   },
 
-  async withdraw({ account, value }) {
-    console.log(account);
-    if (value <= 0) {
-      return new Error('The value must be greater than zero!');
+  async sacar({ conta, valor }) {
+    if (valor <= 0) {
+      return new Error('O valor precisa ser maior que zero!');
     }
 
-    let accountfind = await find(prisma)(account);
+    let accountfind = await find(prisma)(conta);
     if (!accountfind) {
-      return new Error(`Account not found!`);
+      return new Error(`Conta não localizada!`);
     }
-    const balance = accountfind.balance_available;
-    if (value > balance) {
-      return new Error(`Insufficient funds!`);
+    const saldo = accountfind.saldo;
+    if (valor > saldo) {
+      return new Error(`Saldo Insuficiente!`);
     }
-    let accountWithdraw = await withdraw(prisma)(accountfind, value);
+    let accountWithdraw = await withdraw(prisma)(accountfind, valor);
     // return accountWithdraw;
-    return { ...accountWithdraw, msg: 'Successful withdrawal!' };
+    return { ...accountWithdraw, msg: 'Saque realizado com sucesso!' };
   },
 
-  async deposit({ account, value }) {
-    if (value > 0) {
-      let accountfind = await find(prisma)(account);
+  async depositar({ conta, valor }) {
+    if (valor > 0) {
+      let accountfind = await find(prisma)(conta);
       if (!accountfind) {
-        return new Error(`Account not found!`);
+        return new Error(`Conta não localizada!`);
       }
-      const sold = accountfind.balance_available;
-      let accountDeposit = await deposit(prisma)(accountfind, value);
-      return { ...accountDeposit, msg: 'Deposit successful!' };
+      const saldo = accountfind.saldo;
+      let accountDeposit = await deposit(prisma)(accountfind, valor);
+      return { ...accountDeposit, msg: 'Depósito realizado com sucesso!' };
     } else {
-      return new Error('The value must be greater than zero!');
+      return new Error('O valor precisa ser maior que zero!');
     }
   },
 };

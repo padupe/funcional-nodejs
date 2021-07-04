@@ -2,16 +2,16 @@ const prisma = require('./prisma');
 
 async function main() {
   const user = await prisma.user.create({
-    include: { account: true },
+    include: { conta: true },
     data: {
       username: 'paulopeixoto',
-      full_name: 'Paulo Eduardo Peixoto',
+      nome_completo: 'Paulo Eduardo Peixoto',
       email: 'peixoto.pauloeduardo@gmail.com',
-      phone_number: '1298826-8618',
-      account: {
+      telefone: '1298826-8618',
+      conta: {
         create: {
-          number: 16101990,
-          balance_available: 1000,
+          numero: 16101990,
+          saldo: 1000,
         },
       },
     },

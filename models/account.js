@@ -1,35 +1,35 @@
 const find = (prisma) => async (data) => {
-  let result = await prisma.account.findUnique({
-    where: { number: data },
+  let result = await prisma.conta.findUnique({
+    where: { numero: data },
     select: {
-      number: true,
-      balance_available: true,
+      numero: true,
+      saldo: true,
     },
   });
   return result;
 };
 
 const updateBalance = (prisma) => async (account_number, total) => {
-  let result = await prisma.account.update({
-    where: { number: account_number },
+  let result = await prisma.conta.update({
+    where: { numero: account_number },
     select: {
-      number: true,
-      balance_available: true,
+      numero: true,
+      saldo: true,
     },
     data: {
-      balance_available: total,
+      saldo: total,
     },
   });
   return result;
 };
 
-const withdraw = (prisma) => async (account, value) => {
-  const total = account.balance_available - value;
-  return await updateBalance(prisma)(account.number, total);
+const withdraw = (prisma) => async (conta, valor) => {
+  const total = conta.saldo - valor;
+  return await updateBalance(prisma)(conta.numero, total);
 };
-const deposit = (prisma) => async (account, value) => {
-  const total = account.balance_available + value;
-  return await updateBalance(prisma)(account.number, total);
+const deposit = (prisma) => async (conta, valor) => {
+  const total = conta.saldo + valor;
+  return await updateBalance(prisma)(conta.numero, total);
 };
 
 module.exports = {

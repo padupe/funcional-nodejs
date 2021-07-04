@@ -2,9 +2,9 @@
 CREATE TABLE "User" (
     "id" TEXT NOT NULL,
     "username" TEXT NOT NULL,
-    "full_name" TEXT NOT NULL,
+    "nome_completo" TEXT NOT NULL,
     "email" TEXT NOT NULL,
-    "phone_number" TEXT NOT NULL,
+    "telefone" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
@@ -12,11 +12,11 @@ CREATE TABLE "User" (
 );
 
 -- CreateTable
-CREATE TABLE "Account" (
+CREATE TABLE "Conta" (
     "id" TEXT NOT NULL,
-    "number" INTEGER NOT NULL,
+    "numero" INTEGER NOT NULL,
     "userId" TEXT NOT NULL,
-    "balance_available" INTEGER NOT NULL,
+    "saldo" INTEGER NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
@@ -30,7 +30,7 @@ CREATE UNIQUE INDEX "User.username_unique" ON "User"("username");
 CREATE UNIQUE INDEX "User.email_unique" ON "User"("email");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Account.number_unique" ON "Account"("number");
+CREATE UNIQUE INDEX "Conta.numero_unique" ON "Conta"("numero");
 
 -- AddForeignKey
-ALTER TABLE "Account" ADD FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "Conta" ADD FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
