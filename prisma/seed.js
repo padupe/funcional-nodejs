@@ -1,29 +1,54 @@
-const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient();
+const prisma = require('./prisma');
 
-async function main() {
-    const user = await prisma.user.create({
-        data: {
-            username: 'paulopeixoto',
-            full_name: 'Paulo Eduardo Peixoto',
-            email: 'peixoto.pauloeduardo@gmail.com',
-            phone_number: '1298826-8618',
-        }
-    })
-
-    const account = await prisma.account.create({
-        data: {
-            userId: user.id,
-            balance_available: 1000
-        }      
-    })
+async function clearDatabase() {
+  await prisma.conta.deleteMany({ where: {} });
+  await prisma.usuario.deleteMany({ where: {} });
 }
 
-main()
-  .catch((e) => {
-    console.error(e);
-    process.exit(1);
-  })
-  .finally(async () => {
-    await prisma.$disconnect();
+const default_user = {
+  usuario: 'paulopeixoto',
+  nomeCompleto: 'Paulo Eduardo Peixoto',
+  email: 'peixoto.pauloeduardo@gmail.com',
+  telefone: '(12) 98826-8618',
+  conta: {
+    numero: 54321,
+    saldo: 220,
+  },
+};
+
+async function generateUser() {
+  const user = await prisma.usuario.create({
+    include: { conta: true },
+    data: {
+      usuario: default_user.usuario,
+      nomeCompleto: default_user.nomeCompleto,
+      email: default_user.email,
+      telefone: default_user.telefone,
+      conta: {
+        create: {
+          numero: default_user.conta.numero,
+          saldo: default_user.conta.saldo,
+        },
+      },
+    },
   });
+}
+async function main() {
+  await generateUser();
+}
+if (process.env.NODE_ENV !== 'test') {
+  main()
+    .catch((e) => {
+      console.error(e);
+      process.exit(1);
+    })
+    .finally(async () => {
+      await prisma.$disconnect();
+    });
+}
+
+module.exports = {
+  generateUser,
+  clearDatabase,
+  default_user,
+};
