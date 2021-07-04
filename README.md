@@ -14,6 +14,12 @@ Para a conclusão deste desafio, as ferramentas abaixo foram aplicadas:
 - [postgresql] - Sistema gerenciador de Banco de Dados
 - [prettier] - "Formatador" de Código
 - [eslint] - "Corretor" de erros de Código/Sintaxe
+- [jest] - Estrutura de teste de JavaScript
+- [supertest] - Módulo para testes de Integração
+
+## MER
+
+![Screenshot](mer.png)
 
 ## Comandos Úteis para uso da Aplicação
 
@@ -86,6 +92,14 @@ mutation {
 }
 ```
 
+## Testes
+
+Para rodar os testes
+
+```
+    $ yarn test
+```
+
 [//]: #
 [node.js]: http://nodejs.org
 [graphql]: https://graphql.org/
@@ -95,3 +109,5 @@ mutation {
 [postgresql]: https://www.postgresql.org/
 [prettier]: https://prettier.io/
 [eslint]: https://eslint.org/
+[jest]: https://jestjs.io/
+[supertest]: https://www.npmjs.com/package/supertest
