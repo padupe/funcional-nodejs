@@ -10,7 +10,7 @@ beforeAll(async () => {
 });
 
 afterAll(async () => {
-  await clearDatabase();
+  // await clearDatabase();
 });
 
 describe('Test GraphQL API', () => {
@@ -70,14 +70,9 @@ describe('Test GraphQL API', () => {
         .expect((res) => {
           expect(
             res.body.data.sacar.numero,
-            res.body.data.sacar.valor,
+            res.body.data.sacar.saldo,
             res.body.data.sacar.msg
-          );
-          console.log(res);
-          //   .toBe(
-          //     default_user.conta.numero,
-          //     default_user.conta.saldo
-          //   );
+          ).toBe(default_user.conta.numero, default_user.conta.saldo);
         })
         .end(done);
     });

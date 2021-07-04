@@ -79,6 +79,18 @@ describe('Test Account Model', () => {
     expect(total).toBe(accountWithdraw.saldo);
   });
 
+  it('failed to withdraw', async function () {
+    const fakePrisma = {
+      conta: {
+        update: jest.fn().mockReturnValue(Promise.resolve(null)),
+      },
+    };
+
+    let accountWithdraw = await deposit(fakePrisma)(0);
+
+    expect(null).toBe(null);
+  });
+
   it('must make a deposit', async function () {
     let account = defaultAccount();
     let total = account.saldo + default_value;
@@ -96,5 +108,17 @@ describe('Test Account Model', () => {
     );
 
     expect(total).toBe(accountDeposit.saldo);
+  });
+
+  it('failed to make deposit', async function () {
+    const fakePrisma = {
+      conta: {
+        update: jest.fn().mockReturnValue(Promise.resolve(null)),
+      },
+    };
+
+    let accountDeposit = await deposit(fakePrisma)(0);
+
+    expect(null).toBe(null);
   });
 });

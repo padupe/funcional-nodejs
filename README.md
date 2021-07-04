@@ -19,6 +19,8 @@ Para a conclusão deste desafio, as ferramentas abaixo foram aplicadas:
 
 ## MER
 
+Estrtura do Banco de Dados:
+
 ![alt text](https://github.com/padupe/funcional-nodejs/blob/feature/graphql/readmeimg/MER.png)
 
 ## Comandos Úteis para uso da Aplicação
