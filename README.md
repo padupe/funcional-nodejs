@@ -113,7 +113,13 @@ Para rodar os testes
 
 **_Cobertura dos Testes_**
 
-![img]()
+![img](https://github.com/padupe/funcional-nodejs/blob/feature/graphql/readmeimg/coverage.png)
+
+Para validar o _"coverage"_ dos Testes, basta rodar o comando:
+
+```
+    $ yarn test --coverage
+```
 
 [//]: #
 [desafiofuncional_nodejs]: https://github.com/funcional-health/challenge/blob/master/node.md
