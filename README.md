@@ -2,7 +2,7 @@
 
 Desafio proposto no processo de contratação de **Desenvolvedor Backend Jr Nodejs**.
 
-Link para consulta da proposta: [desafiofuncional_nodejs].
+Link para consulta da proposta: [aqui].
 
 ## Ferramentas utilizadas
 
@@ -38,7 +38,7 @@ Iniciar o Servidor da Aplicação
 
 ## Docker
 
-Subir as configurações do container
+Subir as configurações do contêiner
 
 ```
     $ docker-compose up -d
@@ -121,8 +121,10 @@ Para validar o _"coverage"_ dos Testes, basta rodar o comando:
     $ yarn test --coverage
 ```
 
+> Para o bom êxito dos testes, certifique-se que o Servidor e o Contêiner estão em pleno funcionamento.
+
 [//]: #
-[desafiofuncional_nodejs]: https://github.com/funcional-health/challenge/blob/master/node.md
+[aqui]: https://github.com/funcional-health/challenge/blob/master/node.md
 [node.js]: http://nodejs.org
 [graphql]: https://graphql.org/
 [express]: https://expressjs.com/
