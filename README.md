@@ -64,7 +64,7 @@ Enviar dados de Teste
 
 Consulta de Conta e Saldo:
 
-> Você pode usar o endereço [server] para fazer a requisição abaixo.
+> Você pode usar o endereço do [servidor] para fazer a requisição abaixo.
 
 ```graphql
 query {
@@ -77,7 +77,7 @@ query {
 
 Saque:
 
-> Você pode usar o endereço [server] para fazer a requisição abaixo.
+> Você pode usar o endereço do [servidor] para fazer a requisição abaixo.
 
 ```graphql
 mutation {
@@ -91,7 +91,7 @@ mutation {
 
 Depósito:
 
-> Você pode usar o endereço [server] para fazer a requisição abaixo.
+> Você pode usar o endereço do [servidor] para fazer a requisição abaixo.
 
 ```graphql
 mutation {
@@ -144,4 +144,4 @@ _Aplicação desenvolvida por Paulo Eduardo Peixoto_
 [jest]: https://jestjs.io/
 [supertest]: https://www.npmjs.com/package/supertest
 [docker]: https://www.docker.com/
-[server]: http://173.82.114.22:4444/graphql
+[serveidor]: http://173.82.114.22:4444/graphql
