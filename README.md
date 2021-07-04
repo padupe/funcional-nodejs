@@ -123,7 +123,7 @@ Para validar o _"coverage"_ dos Testes, basta rodar o comando:
 
 > Para o bom êxito dos testes, certifique-se que o Servidor e o Contêiner estão em pleno funcionamento.
 
-_Desenvolvido por Paulo Eduardo Peixoto_
+_Aplicação desenvolvida por Paulo Eduardo Peixoto_
 
 [//]: #
 [aqui]: https://github.com/funcional-health/challenge/blob/master/node.md
