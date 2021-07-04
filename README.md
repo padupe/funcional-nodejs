@@ -1,6 +1,8 @@
 ## Challenge Funcional Health Tech
 
-Desafio proposto no processo de contratação de Desenvolvedor Backend Jr Nodejs.
+Desafio proposto no processo de contratação de **Desenvolvedor Backend Jr Nodejs**.
+
+Link para consulta da proposta: [desafiofuncional_nodejs].
 
 ## Ferramentas utilizadas
 
@@ -16,12 +18,13 @@ Para a conclusão deste desafio, as ferramentas abaixo foram aplicadas:
 - [eslint] - "Corretor" de erros de Código/Sintaxe
 - [jest] - Estrutura de teste de JavaScript
 - [supertest] - Módulo para testes de Integração
+- [docker] - "Contêinirzação"
 
 ## MER
 
 Estrtura do Banco de Dados:
 
-![alt text](https://github.com/padupe/funcional-nodejs/blob/feature/graphql/readmeimg/MER.png)
+![img](https://github.com/padupe/funcional-nodejs/blob/feature/graphql/readmeimg/MER.png)
 
 ## Comandos Úteis para uso da Aplicação
 
@@ -102,7 +105,18 @@ Para rodar os testes
     $ yarn test
 ```
 
+> **Atenção:** Ao rodar os testes, e necessário enviar novamente os dados para o banco com o comando:
+
+```
+    $ yarn seed
+```
+
+**_Cobertura dos Testes_**
+
+![img]()
+
 [//]: #
+[desafiofuncional_nodejs]: https://github.com/funcional-health/challenge/blob/master/node.md
 [node.js]: http://nodejs.org
 [graphql]: https://graphql.org/
 [express]: https://expressjs.com/
@@ -113,4 +127,4 @@ Para rodar os testes
 [eslint]: https://eslint.org/
 [jest]: https://jestjs.io/
 [supertest]: https://www.npmjs.com/package/supertest
-[screenshot]: mer.png
+[docker]: https://www.docker.com/

@@ -1,0 +1,20 @@
+version: '3.3'
+services:
+  postgresql:
+    image: postgres:alpine
+    container_name: challengefuncional_api-postgresql
+    environment:
+      - POSTGRES_DB=challenge_funcional
+      - POSTGRES_PASSWORD=development
+    ports:
+      - 5432:5432
+  challenge_funcional-nodejs:
+    build:
+      context: ../../
+      dockerfile: docker/Dockerfile
+    container_name: 'challengefuncional_api'
+    restart: on-failure
+      depends_on: 
+        - postgresql
+      ports:
+        - '4444:4444'
