@@ -24,7 +24,7 @@ Para a conclusão deste desafio, as ferramentas abaixo foram aplicadas:
 
 Estrtura do Banco de Dados:
 
-![img](https://github.com/padupe/funcional-nodejs/blob/feature/graphql/readmeimg/MER.png)
+![img](https://github.com/padupe/funcional-nodejs/blob/master/readmeimg/MER.png)
 
 ## Comandos Úteis para uso da Aplicação
 
@@ -113,7 +113,7 @@ Para rodar os testes:
 
 **_Cobertura dos Testes_**
 
-![img](https://github.com/padupe/funcional-nodejs/blob/feature/graphql/readmeimg/coverage.png)
+![img](https://github.com/padupe/funcional-nodejs/blob/master/readmeimg/coverage.png)
 
 Para validar o _"coverage"_ dos Testes, basta rodar o comando:
 
