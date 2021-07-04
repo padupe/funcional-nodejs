@@ -1,4 +1,4 @@
-## Challenge Funcional Health Tech
+# Challenge Funcional Health Tech
 
 Desafio proposto no processo de contratação de **Desenvolvedor Backend Jr Nodejs**.
 
@@ -28,25 +28,25 @@ Estrtura do Banco de Dados:
 
 ## Comandos Úteis para uso da Aplicação
 
-## Development Server
+### Development Server
 
-Iniciar o Servidor da Aplicação
+Iniciar o Servidor da Aplicação:
 
 ```
     $ yarn dev
 ```
 
-## Docker
+### Docker
 
-Subir as configurações do contêiner
+Subir as configurações do contêiner:
 
 ```
     $ docker-compose up -d
 ```
 
-## Prisma
+### Prisma
 
-Iniciar Migration
+Iniciar Migration:
 
 ```
     $ yarn migrate
@@ -58,11 +58,11 @@ Enviar dados de Teste
     $ yarn seed
 ```
 
-## GraphQL
+### GraphQL
 
-Exemplos de Query e Mutations
+**Exemplos de Query e Mutations**
 
-Consulta de Conta e Saldo
+Consulta de Conta e Saldo:
 
 ```graphql
 query {
@@ -73,7 +73,7 @@ query {
 }
 ```
 
-Saque
+Saque:
 
 ```graphql
 mutation {
@@ -85,7 +85,7 @@ mutation {
 }
 ```
 
-Depósito
+Depósito:
 
 ```graphql
 mutation {
@@ -97,9 +97,9 @@ mutation {
 }
 ```
 
-## Testes
+### Testes
 
-Para rodar os testes
+Para rodar os testes:
 
 ```
     $ yarn test
