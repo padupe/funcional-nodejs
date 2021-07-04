@@ -144,4 +144,4 @@ _Aplicação desenvolvida por Paulo Eduardo Peixoto_
 [jest]: https://jestjs.io/
 [supertest]: https://www.npmjs.com/package/supertest
 [docker]: https://www.docker.com/
-[serveidor]: http://173.82.114.22:4444/graphql
+[servidor]: http://173.82.114.22:4444/graphql
