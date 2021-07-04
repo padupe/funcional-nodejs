@@ -19,7 +19,7 @@ Para a conclusão deste desafio, as ferramentas abaixo foram aplicadas:
 
 ## MER
 
-![Screenshot](mer.png)
+[Screenshot]
 
 ## Comandos Úteis para uso da Aplicação
 
@@ -111,3 +111,4 @@ Para rodar os testes
 [eslint]: https://eslint.org/
 [jest]: https://jestjs.io/
 [supertest]: https://www.npmjs.com/package/supertest
+[screenshot]: mer.png
