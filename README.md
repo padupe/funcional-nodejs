@@ -18,7 +18,7 @@ Para a conclusão deste desafio, as ferramentas abaixo foram aplicadas:
 - [eslint] - "Corretor" de erros de Código/Sintaxe
 - [jest] - Estrutura de teste de JavaScript
 - [supertest] - Módulo para testes de Integração
-- [docker] - "Contêinirzação"
+- [docker] - "Contêinirização"
 
 ## MER
 
