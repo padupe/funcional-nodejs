@@ -18,11 +18,11 @@ Para a conclusão deste desafio, as ferramentas abaixo foram aplicadas:
 - [eslint] - "Corretor" de erros de Código/Sintaxe
 - [jest] - Estrutura de teste de JavaScript
 - [supertest] - Módulo para testes de Integração
-- [docker] - "Contêinirização"
+- [docker] - "Containeirização"
 
 ## MER
 
-Estrtura do Banco de Dados:
+Estrutura do Banco de Dados:
 
 ![img](https://github.com/padupe/funcional-nodejs/blob/master/readmeimg/MER.png)
 
@@ -127,7 +127,7 @@ Para validar o _"coverage"_ dos Testes, basta rodar o comando:
     $ yarn test --coverage
 ```
 
-> Para o bom êxito dos testes, certifique-se que o Servidor e o Contêiner estão em pleno funcionamento.
+> Para o bom êxito dos testes, certifique-se que o Servidor e o Container estão em pleno funcionamento.
 
 _Aplicação desenvolvida por Paulo Eduardo Peixoto_
 
